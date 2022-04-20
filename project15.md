@@ -46,6 +46,40 @@ We are setting up these instances with the above instructions:
  
  With each AMI, create Launch Template.
  ![](launch-template.jpg)
+ Ensure the Instances are launched into appropriate subnets
  
  Repeat for all the AMIs
  ![](all-lt)
+ 
+ TLS Certificates From Amazon Certificate Manager (ACM)
+
+1. Navigate to AWS ACM
+1. Request a public wildcard certificate for the domain name you registered in Freenom
+1. Use DNS to validate the domain name
+1. Tag the resource
+
+### CONFIGURE APPLICATION LOAD BALANCER (ALB) ###
+**Application Load Balancer To Route Traffic To NGINX** (External)
+Nginx EC2 Instances will have configurations that accepts incoming traffic only from Load Balancers. No request should go directly to Nginx servers. With this kind of setup, we will benefit from intelligent routing of requests from the ALB to Nginx servers across the 2 Availability Zones. We will also be able to offload SSL/TLS certificates on the ALB instead of Nginx. Therefore, Nginx will be able to perform faster since it will not require extra compute resources to valifate certificates for every request.
+
+1. Create an Internet facing ALB
+1. Ensure that it listens on HTTPS protocol (TCP port 443)
+1. Ensure the ALB is created within the appropriate VPC | AZ | Subnets
+1. Choose the Certificate from ACM
+1. Select Security Group
+1. Select Nginx Instances as the target group
+
+**Application Load Balancer To Route Traffic To Web Servers** (Internal)
+Since the webservers are configured for auto-scaling, there is going to be a problem if servers get dynamically scalled out or in. Nginx will not know about the new IP addresses, or the ones that get removed. Hence, Nginx will not know where to direct the traffic.
+
+To solve this problem, we must use a load balancer. But this time, it will be an internal load balancer. Not Internet facing since the webservers are within a private subnet, and we do not want direct access to them.
+
+1. Create an Internal ALB
+1. Ensure that it listens on HTTPS protocol (TCP port 443)
+1. Ensure the ALB is created within the appropriate VPC | AZ | Subnets
+1. Choose the Certificate from ACM
+1. Select Security Group
+1. Select webserver Instances as the target group
+1. Ensure that health check passes for the target group
+
+![](load-balancers.jpg)
