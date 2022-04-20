@@ -50,12 +50,13 @@ We are setting up these instances with the above instructions:
  ![](launch-template.jpg)
  Ensure the Instances are launched into appropriate subnets
  
- Create Auto Scaling Group
- Launch Console and create auto scaling group for Bastion, tooling, webserver and niginx using the corresponding Launch Templates
- ![](asg.jpg)
- 
  Repeat for all the AMIs
  ![](all-lt)
+ 
+ **Create Auto Scaling Group**
+ 
+ Launch Console and create auto scaling group for Bastion, tooling, webserver and niginx using the corresponding Launch Templates
+ ![](asg.jpg)
  
  TLS Certificates From Amazon Certificate Manager (ACM)
 
