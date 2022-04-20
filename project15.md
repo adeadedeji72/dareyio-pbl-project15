@@ -123,4 +123,4 @@ You need to ensure that the main domain for the WordPress website can be reached
 ![](r53.jpg)
 
 ![](tooling.jpg)
-![](wordpress.jpg)
+![](wordpress .jpg)
