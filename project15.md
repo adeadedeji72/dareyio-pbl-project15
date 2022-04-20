@@ -30,34 +30,14 @@ Create Security Groups to allow traffic within the infrastructure:
 ![](security-groups.jpg)
 Create EC2 Instances that will form the bases for Bastion, Tooling, Nginx and WordPress AMIs
 Launch 3 instances of Red Hat Linux t2.micro
- For Bastion:
-  Login to the instance designated for Bastion
-  Update the instance
-  Install these package:
-  ~~~
-  sudo yum -y install python ntp net-tools vim wget telnet epel-release htop
-  ~~~
-  Create an AMI from the instance when the packages are installed 
-  
-- Prepare Launch Template For Bastion (One per subnet)
-Make use of the AMI to set up a launch template
-Ensure the Instances are launched into a public subnet
-Assign appropriate security group
-Configure Userdata to update yum package repository and install Ansible and git
-- Configure Target Groups
-Select Instances as the target type
-Ensure the protocol is TCP on port 22
-Register Bastion Instances as targets
-Ensure that health check passes for the target group
-- Configure Autoscaling For Bastion
-Select the right launch template
-Select the VPC
-Select both public subnets
-- Enable Application Load Balancer for the AutoScalingGroup (ASG)
-Select the target group you created before
-- Ensure that you have health checks for both EC2 and ALB
-The desired capacity is 2
-Minimum capacity is 2
-Maximum capacity is 4
-Set scale out if CPU utilization reaches 90%
-Ensure there is an SNS topic to send scaling notifications
+
+Use the instructions in the link below to prepare the three instances
+
+![Instances Configuration file](./Installation.md)
+
+We are setting up these instances with the above instructions:
+ Bastion
+ Nignix
+ Tooling
+ Webserver
+ 
