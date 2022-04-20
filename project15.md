@@ -94,6 +94,8 @@ Complete for both tooling and WordPress
 1. Create an EFS mount target per AZ in the VPC, associate it with both subnets dedicated for data layer
 1. Associate the Security groups created earlier for data layer.
 1. Create an EFS access point for both tooling and wordpress sites. (Give it a name and leave all other settings as default)
+![](efs.jpg)
+![](ap.jpg)
 
 **Setup RDS**
 Pre-requisite: Create a KMS key from Key Management Service (KMS) to be used to encrypt the database instance.
@@ -109,3 +111,7 @@ To ensure that your databases are highly available and also have failover suppor
 1. Configure backups and retention
 1. Encrypt the database using the KMS key created earlier
 1. Enable CloudWatch monitoring and export Error and Slow Query logs (for production, also include Audit)
+
+## Configuring DNS with Route53 ##
+You need to ensure that the main domain for the WordPress website can be reached, and the subdomain for Tooling website can also be reached using a browser.
+![](r53.jpg)
