@@ -120,3 +120,6 @@ To ensure that your databases are highly available and also have failover suppor
 ## Configuring DNS with Route53 ##
 You need to ensure that the main domain for the WordPress website can be reached, and the subdomain for Tooling website can also be reached using a browser.
 ![](r53.jpg)
+
+![](tooling.jpg)
+![](wordpress.jpg)
