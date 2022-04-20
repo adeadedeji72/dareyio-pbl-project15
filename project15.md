@@ -103,8 +103,7 @@ Amazon Relational Database Service (Amazon RDS) is a managed distributed relatio
 To ensure that your databases are highly available and also have failover support in case one availability zone fails, we will configure a multi-AZ set up of RDS MySQL database instance. In our case, since we are only using 2 AZs, we can only failover to one, but the same concept applies to 3 Availability Zones. We will not consider possible failure of the whole Region, but for this AWS also has a solution – this is a more advanced concept that will be discussed in following projects.
 
 1. Create a subnet group and add 2 private subnets (data Layer)
-1. Create an RDS Instance for mysql 8.*.*
-1. To satisfy our architectural diagram, you will need to select either Dev/Test or Production Sample Template. But to minimize AWS cost, you can select the Do not 1. create a standby instance option under Availability & durability sample template (The production template will enable Multi-AZ deployment)
+1. Create an RDS Instance for mysql 8.0.2
 1. Configure other settings accordingly (For test purposes, most of the default settings are good to go). In the real world, you will need to size the database appropriately. You will need to get some information about the usage. If it is a highly transactional database that grows at 10GB weekly, you must bear that in mind while configuring the initial storage allocation, storage autoscaling, and maximum storage threshold.
 1. Configure VPC and security (ensure the database is not available from the Internet)
 1. Configure backups and retention
