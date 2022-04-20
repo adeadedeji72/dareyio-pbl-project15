@@ -95,7 +95,7 @@ Complete for both tooling and WordPress
 1. Associate the Security groups created earlier for data layer.
 1. Create an EFS access point for both tooling and wordpress sites. (Give it a name and leave all other settings as default)
 ![](efs.jpg)
-![](ap.jpg)
+![](aps.jpg)
 
 **Setup RDS**
 Pre-requisite: Create a KMS key from Key Management Service (KMS) to be used to encrypt the database instance.
