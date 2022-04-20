@@ -41,3 +41,11 @@ We are setting up these instances with the above instructions:
  Tooling
  Webserver
  
+ Create an AMI from each of the configured instances
+ ![](create-ami.jpg)
+ 
+ With each AMI, create Launch Template.
+ ![](launch-template.jpg)
+ 
+ Repeat for all the AMIs
+ ![](all-lt)
